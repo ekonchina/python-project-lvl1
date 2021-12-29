@@ -4,6 +4,9 @@ install:
 brain-games:
 	poetry run brain-games
 
+brain-even:
+	poetry run brain-even
+
 build:
 	poetry build
 
@@ -11,16 +14,13 @@ publish:
 	poetry publish --dry-run
 
 package-install:
-	python3 -m pip install --user dist/*.whl
+	python3 -m pip install dist/*.whl
 
-test:
-	poetry run pytest
+package-uninstall:
+	python3 -m pip uninstall dist/*.whl
 
-test-coverage:
-	poetry run pytest --cov=hexlet_python_package --cov-report xml
-
-selfcheck:
-	poetry check
+package-reinstall:
+	python3 -m pip install --user --force-reinstall dist/*.whl,
 
 lint:
 	poetry run flake8 brain_games
